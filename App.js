@@ -3,7 +3,41 @@ import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpa
 
 export default function App() {
   const [city, setCity] = useState('');
-  const [weather, setWeather] = useState('soleado');
+  const [weather, setWeather] = useState('0');
+  const [degree, setDegree] = useState('20°');
+  const message = [
+    'actualmente soleado',
+    'actualmente nublado',
+    'actualmente lluvioso',
+    'actualmente en tormenta'
+  ];
+  const background = [
+    require('./assets/images/fondo-soleado.png'),
+    require('./assets/images/fondo-nublado.jpg'),
+    require('./assets/images/fondo-lluvioso.jpg'),
+    require('./assets/images/fondo-tormenta.jpg'),
+  ];
+  const img = [
+    require('./assets/images/soleado.png'),
+    require('./assets/images/nublado.png'),
+    require('./assets/images/lluvioso.png'),
+    require('./assets/images/tormenta.png'),
+  ];
+
+  const handleSunny = () => {
+    setWeather(1);
+  };
+  const handleCloudy = () => {
+    setWeather(2);
+  };
+  const handleRainy = () => {
+    setWeather(3);
+  };
+  const handleStormy = () => {
+    setWeather(4);
+  };
+
+
   return (
     <ImageBackground
       source={require('./assets/images/fondo-soleado.png')}
@@ -17,7 +51,7 @@ export default function App() {
         value={city}
         onChangeText={setCity}
       />
-      <Text style={styles.degrees}>20°</Text>
+      <Text style={styles.degrees}>{degree}</Text>
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
@@ -25,30 +59,30 @@ export default function App() {
           resizeMode="contain"
         />
       </View>
-      <Text style={styles.message}>{city}actualmente {weather} </Text>
+      <Text style={styles.message}>{city} actualmente {weather}</Text>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.buttonImage}>
+        <TouchableOpacity onPress={handleSunny} style={styles.buttonImage}>
           <Image
             style={styles.image}
             source={require('./assets/images/soleado.png')}
             resizeMode="contain"
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonImage}>
+        <TouchableOpacity onPress={handleCloudy} style={styles.buttonImage}>
           <Image
             style={styles.image}
             source={require('./assets/images/nublado.png')}
             resizeMode="contain"
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonImage}>
+        <TouchableOpacity onPress={handleRainy} style={styles.buttonImage}>
           <Image
             style={styles.image}
             source={require('./assets/images/lluvioso.png')}
             resizeMode="contain"
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonImage}>
+        <TouchableOpacity onPress={handleStormy} style={styles.buttonImage}>
           <Image
             style={styles.image}
             source={require('./assets/images/tormenta.png')}

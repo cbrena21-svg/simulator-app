@@ -1,28 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity } from 'react-native';
 
 export default function App() {
   const [city, setCity] = useState('');
-  const [weather, setWeather] = useState('0');
-  const [degree, setDegree] = useState('20°');
-  const message = [
+  const [weather, setWeather] = useState(0);
+  const messages = [
+    'Elige tu clima preferido',
     'actualmente soleado',
     'actualmente nublado',
     'actualmente lluvioso',
     'actualmente en tormenta'
   ];
-  const background = [
+  const backgrounds = [
+    require('./assets/images/fondo.jpg'),
     require('./assets/images/fondo-soleado.png'),
     require('./assets/images/fondo-nublado.jpg'),
     require('./assets/images/fondo-lluvioso.jpg'),
     require('./assets/images/fondo-tormenta.jpg'),
   ];
   const img = [
+    require('./assets/images/logo.png'),
     require('./assets/images/soleado.png'),
     require('./assets/images/nublado.png'),
     require('./assets/images/lluvioso.png'),
     require('./assets/images/tormenta.png'),
   ];
+  const degrees = [
+    '',
+    '21°',
+    '12°',
+    '8°',
+    '2°',
+  ];
+  const [image, setImage] = useState(img[0]);
+  const [background, setBackground] = useState(backgrounds[0]);
+  const [message, setMessage] = useState(messages[0]);
+  const [degree, setDegree] = useState(degrees[0]);
+
 
   const handleSunny = () => {
     setWeather(1);
@@ -37,10 +51,16 @@ export default function App() {
     setWeather(4);
   };
 
+  useEffect(() => {
+    setImage(img[weather]);
+    setBackground(backgrounds[weather]);
+    setMessage(messages[weather]);
+    setDegree(degrees[weather]);
+  }, [weather]);
 
   return (
     <ImageBackground
-      source={require('./assets/images/fondo-soleado.png')}
+      source={background}
       style={styles.container}
       resizeMode='cover'
     >
@@ -55,11 +75,11 @@ export default function App() {
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
-          source={require('./assets/images/soleado.png')}
+          source={image}
           resizeMode="contain"
         />
       </View>
-      <Text style={styles.message}>{city} actualmente {weather}</Text>
+      <Text style={styles.message}>{city} {message}</Text>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity onPress={handleSunny} style={styles.buttonImage}>
           <Image

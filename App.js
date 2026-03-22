@@ -16,7 +16,7 @@ export default function App() {
     require('./assets/images/fondo-soleado.png'),
     require('./assets/images/fondo-nublado.jpg'),
     require('./assets/images/fondo-lluvioso.jpg'),
-    require('./assets/images/fondo-tormenta.jpg'),
+    require('./assets/images/fondo-tormenta6.jpg'),
   ];
   const img = [
     require('./assets/images/logo.png'),
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
   degrees: {
     height: '15%',
-    color: '#3D3D3D',
+    color: '#060C18',
     fontSize: 120,
     fontFamily: 'arial',
   },
@@ -144,15 +144,18 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   message: {
+    margin: 20,
     fontFamily: 'monospace',
     fontSize: 15,
+    color: 'black',
+    fontWeight: 'bold',
   },
   buttonsContainer: {
     height: '50%',
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: 40,
+    margin: 20,
     gap: 20,
   },
   buttonImage: {

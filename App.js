@@ -16,7 +16,7 @@ export default function App() {
     require('./assets/images/fondo-soleado.png'),
     require('./assets/images/fondo-nublado.jpg'),
     require('./assets/images/fondo-lluvioso.jpg'),
-    require('./assets/images/fondo-tormenta6.jpg'),
+    require('./assets/images/fondo-tormenta.jpg'),
   ];
   const img = [
     require('./assets/images/logo.png'),
